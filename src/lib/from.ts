@@ -10,18 +10,20 @@
  * ]))
  * // => { value: true, lvl1: { lvl2: [ [ undefined, { '50': false } ] ] } }
  * ```
- * 
+ *
  * @param value   array of path value.
  * @returns       an object or array.
  */
-export function from(description: Array<{path: Array<string | number>, value: any}>): any {
+export function from(
+  description: Array<{ path: Array<string | number>; value: any }>
+): any {
   const result = Number.isInteger(description[0].path[0] as number) ? [] : {};
 
   for (const { path, value } of description) {
     let node = result;
     for (let index = 0; index < path.length; index++) {
       const key = path[index];
-  
+
       if (index !== path.length - 1) {
         if (!node[key]) {
           node[key] = Number.isInteger(path[index + 1] as number) ? [] : {};

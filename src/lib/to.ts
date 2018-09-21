@@ -16,13 +16,13 @@ const isArray = Array.isArray;
  * ### Example
  * ```js
  * import { to as toDescription } from 'object-description'
- * console.log(toDescription({ 
- *    value: true, 
- *    lvl1: { 
- *       lvl2: [ 
- *           [undefined, { 50: false }] 
+ * console.log(toDescription({
+ *    value: true,
+ *    lvl1: {
+ *       lvl2: [
+ *           [undefined, { 50: false }]
  *      ]
- *   } 
+ *   }
  * }))
  * // => [
  * // { path: ['value'], value: true },
@@ -33,8 +33,10 @@ const isArray = Array.isArray;
  * @param value   an object or array.
  * @returns       array of path value.
  */
-export function to(value: any): Array<{path: Array<string | number>, value: any}> {
-  const result: Array<{path: Array<string | number>, value: any}> = [];
+export function to(
+  value: any
+): Array<{ path: Array<string | number>; value: any }> {
+  const result: Array<{ path: Array<string | number>; value: any }> = [];
   const nodes = [{ path: [] as Array<string | number>, value }];
 
   while (nodes.length > 0) {
