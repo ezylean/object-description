@@ -1,0 +1,58 @@
+/**
+ * check if a given value is actually a literal object
+ */
+function isLiteralObject(value) {
+  return !!value && value.constructor === Object;
+}
+
+/**
+ * check if a given value is actually an array
+ */
+const isArray = Array.isArray;
+
+/**
+ * Convert any object/array into an array of path-value
+ *
+ * ### Example
+ * ```js
+ * import { to as toDescription } from 'object-description'
+ * console.log(toDescription({ 
+ *    value: true, 
+ *    lvl1: { 
+ *       lvl2: [ 
+ *           [undefined, { 50: false }] 
+ *      ]
+ *   } 
+ * }))
+ * // => [
+ * // { path: ['value'], value: true },
+ * // { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }
+ * // ]
+ * ```
+ *
+ * @param value   an object or array.
+ * @returns       array of path value.
+ */
+export function to(value: any): Array<{path: Array<string | number>, value: any}> {
+  const result: Array<{path: Array<string | number>, value: any}> = [];
+  const nodes = [{ path: [] as Array<string | number>, value }];
+
+  while (nodes.length > 0) {
+    const node = nodes.pop();
+
+    for (const key in node.value) {
+      if (node.value.hasOwnProperty(key)) {
+        const path = node.path.concat(isArray(node.value) ? Number(key) : key);
+        const pair = { path, value: node.value[key] };
+
+        if (isLiteralObject(node.value[key]) || isArray(node.value[key])) {
+          nodes.unshift(pair);
+        } else if (pair.value !== undefined) {
+          result.push(pair);
+        }
+      }
+    }
+  }
+
+  return result;
+}

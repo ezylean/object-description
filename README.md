@@ -1,3 +1,3 @@
 # object-description
 
-transform deeply nested objects into path-value map and back.
+a more robust representation for flatten objects/arrays.

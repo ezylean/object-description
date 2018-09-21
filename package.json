@@ -1,11 +1,11 @@
 {
   "name": "object-description",
   "version": "1.0.0",
-  "description": "transform deeply nested objects into path-value map and back.",
+  "description": "a more robust representation for flatten objects",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/YOUR_GITHUB_USER_NAME/object-description",
+  "repository": "https://github.com/ezylean/object-description",
   "license": "MIT",
   "keywords": [],
   "scripts": {
