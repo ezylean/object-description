@@ -1,7 +1,7 @@
 /**
  * check if a given value is a javascript primitive
  */
-function isPrimitive (value) {
+function isPrimitive(value) {
   return value !== Object(value);
 }
 

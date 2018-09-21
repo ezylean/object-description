@@ -49,13 +49,13 @@ test('simple array', t => {
 });
 
 test('support classic classes', t => {
-  function User (name: string, age: number) {
+  function User(name: string, age: number) {
     this.name = name;
     this.age = age;
   }
-  
+
   User.prototype.run = () => {
-      // im running silently ^^
+    // im running silently ^^
   };
 
   const obj = { users: [new User('hubert', 22), new User('john', 25)] };
@@ -74,7 +74,7 @@ test('support es6 classes', t => {
   class User {
     constructor(public name: string, public age: number) {}
 
-    public run () {
+    public run() {
       // im running silently ^^
     }
   }
@@ -91,10 +91,7 @@ test('support es6 classes', t => {
   t.deepEqual(to(obj), expected);
 });
 
-
-
 test('undefined values are not keeped', t => {
-  
   const obj = { value: true, anotherValue: false, imaghost: undefined };
 
   const expected = [
