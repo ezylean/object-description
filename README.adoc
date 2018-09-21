@@ -24,7 +24,7 @@ flatten/unflatten libraries relies on string based notation for paths leading to
 == Install
 
 ```shell
-npm install object-description
+npm install @ezy/object-description
 ```
 
 == Usage
@@ -32,7 +32,7 @@ npm install object-description
 === iterate over values
 
 ```js
-import { to as toDescription } from 'object-description'
+import { to as toDescription } from '@ezy/object-description'
 
 const flatten = toDescription({ 
     value: true, 
@@ -57,7 +57,7 @@ for (const { path, value } of flatten) {
 === change all values 
 
 ```js
-import { from as fromDescription , to as toDescription } from 'object-description'
+import { from as fromDescription , to as toDescription } from '@ezy/object-description'
 
 const flatten = toDescription({ 
     value: true, 

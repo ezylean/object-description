@@ -15,7 +15,7 @@ const isArray = Array.isArray;
  *
  * ### Example
  * ```js
- * import { to as toDescription } from 'object-description'
+ * import { to as toDescription } from '@ezy/object-description'
  * console.log(toDescription({
  *    value: true,
  *    lvl1: {

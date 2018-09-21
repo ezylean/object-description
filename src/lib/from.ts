@@ -3,7 +3,7 @@
  *
  * ### Example
  * ```js
- * import { from as fromDescription } from 'object-description'
+ * import { from as fromDescription } from '@ezy/object-description'
  * console.log(fromDescription([
  *   { path: ['value'], value: true },
  *   { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }

@@ -1,5 +1,5 @@
 {
-  "name": "object-description",
+  "name": "@ezy/object-description",
   "version": "1.0.0",
   "description": "a more robust representation for flatten objects",
   "main": "build/main/index.js",
