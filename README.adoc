@@ -38,7 +38,7 @@ const flatten = toDescription({
     value: true, 
     lvl1: { 
         lvl2: [ 
-            [undefined, {50: false }] 
+            [ undefined, { 50: false } ] 
         ]
     } 
 });
@@ -63,7 +63,7 @@ const flatten = toDescription({
     value: true, 
     lvl1: { 
         lvl2: [ 
-            [undefined, {50: false }] 
+            [ undefined, { 50: false } ] 
         ]
     } 
 });
@@ -78,7 +78,7 @@ console.log(stringified);
 //     value: "true", 
 //     lvl1: { 
 //         lvl2: [ 
-//             [undefined, {50: "false" }] 
+//             [ undefined, { 50: "false" } ] 
 //         ]
 //     } 
 // })

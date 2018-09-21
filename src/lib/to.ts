@@ -1,8 +1,8 @@
 /**
- * check if a given value is actually a literal object
+ * check if a given value is a javascript primitive
  */
-function isLiteralObject(value) {
-  return !!value && value.constructor === Object;
+function isPrimitive (value) {
+  return value !== Object(value);
 }
 
 /**
@@ -47,7 +47,7 @@ export function to(
         const path = node.path.concat(isArray(node.value) ? Number(key) : key);
         const pair = { path, value: node.value[key] };
 
-        if (isLiteralObject(node.value[key]) || isArray(node.value[key])) {
+        if (!isPrimitive(pair.value)) {
           nodes.unshift(pair);
         } else if (pair.value !== undefined) {
           result.push(pair);
