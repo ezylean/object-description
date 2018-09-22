@@ -1,6 +1,5 @@
 src
 test
-README.md
 tsconfig.json
 tsconfig.module.json
 tslint.json
