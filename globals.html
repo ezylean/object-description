@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>object-description</title>
+	<title>@ezy/object-description</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">object-description</a>
+					<a href="index.html" class="title">@ezy/object-description</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> object-description</h1>
+			<h1> @ezy/object-description</h1>
 		</div>
 	</div>
 </header>
@@ -77,7 +77,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="globals.html#from" class="tsd-kind-icon">from</a></li>
-								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#isliteralobject" class="tsd-kind-icon">is<wbr>Literal<wbr>Object</a></li>
+								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#isprimitive" class="tsd-kind-icon">is<wbr>Primitive</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#to" class="tsd-kind-icon">to</a></li>
 							</ul>
 						</section>
@@ -92,7 +92,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Array<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">isArray</span><span class="tsd-signature-symbol"> =&nbsp;Array.isArray</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ezylean/object-description/blob/8c43bda/src/lib/to.ts#L11">lib/to.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/ezylean/object-description/blob/c62d84c/src/lib/to.ts#L11">lib/to.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -114,7 +114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/8c43bda/src/lib/from.ts#L17">lib/from.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/c62d84c/src/lib/from.ts#L17">lib/from.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -122,7 +122,7 @@
 									<p>Convert an array of path-value in it&#39;s exact object/array representation</p>
 								</div>
 								<h3 id="example">Example</h3>
-								<pre><code class="language-js"><span class="hljs-keyword">import</span> { <span class="hljs-keyword">from</span> <span class="hljs-keyword">as</span> fromDescription } <span class="hljs-keyword">from</span> <span class="hljs-string">'object-description'</span>
+								<pre><code class="language-js"><span class="hljs-keyword">import</span> { <span class="hljs-keyword">from</span> <span class="hljs-keyword">as</span> fromDescription } <span class="hljs-keyword">from</span> <span class="hljs-string">'@ezy/object-description'</span>
 <span class="hljs-built_in">console</span>.log(fromDescription([
   { <span class="hljs-attr">path</span>: [<span class="hljs-string">'value'</span>], <span class="hljs-attr">value</span>: <span class="hljs-literal">true</span> },
   { <span class="hljs-attr">path</span>: [<span class="hljs-string">'lvl1'</span>, <span class="hljs-string">'lvl2'</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'50'</span>], <span class="hljs-attr">value</span>: <span class="hljs-literal">false</span> }
@@ -141,21 +141,21 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
-					<a name="isliteralobject" class="tsd-anchor"></a>
-					<h3>is<wbr>Literal<wbr>Object</h3>
+					<a name="isprimitive" class="tsd-anchor"></a>
+					<h3>is<wbr>Primitive</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Literal<wbr>Object<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Primitive<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/8c43bda/src/lib/to.ts#L4">lib/to.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/c62d84c/src/lib/to.ts#L4">lib/to.ts:4</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>check if a given value is actually a literal object</p>
+									<p>check if a given value is a javascript primitive</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -178,7 +178,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/8c43bda/src/lib/to.ts#L36">lib/to.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/c62d84c/src/lib/to.ts#L36">lib/to.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -186,7 +186,7 @@
 									<p>Convert any object/array into an array of path-value</p>
 								</div>
 								<h3 id="example">Example</h3>
-								<pre><code class="language-js"><span class="hljs-keyword">import</span> { to <span class="hljs-keyword">as</span> toDescription } <span class="hljs-keyword">from</span> <span class="hljs-string">'object-description'</span>
+								<pre><code class="language-js"><span class="hljs-keyword">import</span> { to <span class="hljs-keyword">as</span> toDescription } <span class="hljs-keyword">from</span> <span class="hljs-string">'@ezy/object-description'</span>
 <span class="hljs-built_in">console</span>.log(toDescription({
    <span class="hljs-attr">value</span>: <span class="hljs-literal">true</span>,
    <span class="hljs-attr">lvl1</span>: {
@@ -233,7 +233,7 @@
 						<a href="globals.html#from" class="tsd-kind-icon">from</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#isliteralobject" class="tsd-kind-icon">is<wbr>Literal<wbr>Object</a>
+						<a href="globals.html#isprimitive" class="tsd-kind-icon">is<wbr>Primitive</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#to" class="tsd-kind-icon">to</a>
