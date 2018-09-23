@@ -64,16 +64,16 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<p align="center">
+				<h1 align="center">
 					<img src="https://fakeimg.pl/900x300/ffffff/333333/?text=object+description&font=museo" alt="object description" width="900px" />
-				</p>
+				</h1>
 				<p align="center">a more robust representation for flatten objects/arrays.</p>
 				<p align="center">
 					<a href="https://opensource.org/licenses">
 						<img src="https://img.shields.io/github/license/ezylean/object-description.svg" alt="License" />
 					</a>
 					<a href="https://circleci.com/gh/ezylean/object-description/tree/master">
-						<img src="https://circleci.com/gh/ezylean/object-description/tree/master.svg?style=shield" alt="CircleCI" />
+						<img src="https://circleci.com/gh/ezylean/object-description/tree/master.svg" alt="CircleCI" />
 					</a>
 					<a href="https://codecov.io/gh/ezylean/object-description">
 						<img src="https://codecov.io/gh/ezylean/object-description/branch/master/graph/badge.svg" alt="codecov" />
@@ -99,27 +99,28 @@
 					<a href="https://github.com/prettier/prettier">
 						<img src="https://img.shields.io/badge/code%20style-prettier-ff69b4.svg" alt="Code style: prettier" />
 					</a>
+					<a href="https://npm.runkit.com/@ezy/object-description">
+						<img src="https://img.shields.io/badge/runkit-try%20now-%236967CA.svg" alt="Runkit: try now" />
+					</a>
 				</p>
 				<h2 id="why">Why</h2>
 				<p>flatten/unflatten libraries relies on string based notation for paths leading to mismatches in conversions.</p>
 				<h2 id="install">Install</h2>
-				<pre><code class="language-shell">npm install @ezy/object-description</code></pre>
+				<pre><code class="language-shell">npm i @ezy/object-description</code></pre>
 				<h2 id="usage">Usage</h2>
 				<h3 id="iterate-over-values">iterate over values</h3>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { to <span class="hljs-keyword">as</span> toDescription } <span class="hljs-keyword">from</span> <span class="hljs-string">'@ezy/object-description'</span>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { to <span class="hljs-keyword">as</span> toDescription } <span class="hljs-keyword">from</span> <span class="hljs-string">'@ezy/object-description'</span>;
 
-<span class="hljs-keyword">const</span> flatten = toDescription({ 
-    <span class="hljs-attr">value</span>: <span class="hljs-literal">true</span>, 
-    <span class="hljs-attr">lvl1</span>: { 
-        <span class="hljs-attr">lvl2</span>: [ 
-            [ <span class="hljs-literal">undefined</span>, { <span class="hljs-number">50</span>: <span class="hljs-literal">false</span> } ] 
-        ]
-    } 
+<span class="hljs-keyword">const</span> desc = toDescription({
+  <span class="hljs-attr">value</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">lvl1</span>: {
+    <span class="hljs-attr">lvl2</span>: [[<span class="hljs-literal">undefined</span>, { <span class="hljs-number">50</span>: <span class="hljs-literal">false</span> }]]
+  }
 });
 
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> { path, value } <span class="hljs-keyword">of</span> flatten) {
-    <span class="hljs-built_in">console</span>.log(path);
-    <span class="hljs-built_in">console</span>.log(value);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> { path, value } <span class="hljs-keyword">of</span> desc.primitives) {
+  <span class="hljs-built_in">console</span>.log(path);
+  <span class="hljs-built_in">console</span>.log(value);
 }
 
 <span class="hljs-comment">// ['value']</span>
@@ -127,31 +128,40 @@
 <span class="hljs-comment">// ['lvl1', 'lvl2', 0, 1, '50']</span>
 <span class="hljs-comment">// false</span></code></pre>
 				<h3 id="change-all-values">change all values</h3>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> { <span class="hljs-keyword">from</span> <span class="hljs-keyword">as</span> fromDescription , to <span class="hljs-keyword">as</span> toDescription } <span class="hljs-keyword">from</span> <span class="hljs-string">'@ezy/object-description'</span>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> {
+  <span class="hljs-keyword">from</span> <span class="hljs-keyword">as</span> fromDescription,
+  to <span class="hljs-keyword">as</span> toDescription
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'@ezy/object-description'</span>;
 
-<span class="hljs-keyword">const</span> flatten = toDescription({ 
-    <span class="hljs-attr">value</span>: <span class="hljs-literal">true</span>, 
-    <span class="hljs-attr">lvl1</span>: { 
-        <span class="hljs-attr">lvl2</span>: [ 
-            [ <span class="hljs-literal">undefined</span>, { <span class="hljs-number">50</span>: <span class="hljs-literal">false</span> } ] 
-        ]
-    } 
+<span class="hljs-keyword">const</span> desc = toDescription({
+  <span class="hljs-attr">value</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">lvl1</span>: {
+    <span class="hljs-attr">lvl2</span>: [[<span class="hljs-literal">undefined</span>, { <span class="hljs-number">50</span>: <span class="hljs-literal">false</span> }]]
+  }
 });
 
-<span class="hljs-keyword">const</span> stringified = fromDescription(flatten.map(<span class="hljs-function">(<span class="hljs-params">{ path, value }</span>) =&gt;</span> { 
-    <span class="hljs-keyword">return</span> { path, <span class="hljs-attr">value</span>: value.toString() }; 
-}))
+<span class="hljs-keyword">const</span> stringified = fromDescription({
+  <span class="hljs-attr">is_array</span>: desc.is_array,
+  <span class="hljs-attr">primitives</span>: desc.primitives.map(<span class="hljs-function">(<span class="hljs-params">{ path, value }</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> { path, <span class="hljs-attr">value</span>: value.toString() };
+  })
+});
 
 <span class="hljs-built_in">console</span>.log(stringified);
 
-<span class="hljs-comment">// { </span>
-<span class="hljs-comment">//     value: "true", </span>
-<span class="hljs-comment">//     lvl1: { </span>
-<span class="hljs-comment">//         lvl2: [ </span>
-<span class="hljs-comment">//             [ undefined, { 50: "false" } ] </span>
+<span class="hljs-comment">// {</span>
+<span class="hljs-comment">//     value: "true",</span>
+<span class="hljs-comment">//     lvl1: {</span>
+<span class="hljs-comment">//         lvl2: [</span>
+<span class="hljs-comment">//             [ undefined, { 50: "false" } ]</span>
 <span class="hljs-comment">//         ]</span>
-<span class="hljs-comment">//     } </span>
+<span class="hljs-comment">//     }</span>
 <span class="hljs-comment">// })</span></code></pre>
+				<h2 id="links">Links</h2>
+				<ul>
+					<li><a href="https://ezylean.github.io/object-description">API docs</a></li>
+					<li><a href="https://npm.runkit.com/@ezy/object-description">Playground</a></li>
+				</ul>
 				<h2 id="see-also">See also</h2>
 				<ul>
 					<li><a href="https://ramdajs.com/docs/#assocPath">https://ramdajs.com/docs/#assocPath</a></li>
@@ -174,6 +184,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/description.html" class="tsd-kind-icon">Description</a>
+					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#isarray" class="tsd-kind-icon">is<wbr>Array</a>
 					</li>
