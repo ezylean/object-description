@@ -12,7 +12,8 @@ function isPrimitive(value) {
 const isArray = Array.isArray;
 
 /**
- * Convert any object/array into an array of path-value
+ * Convert any object/array into a description object
+ * with all primitives values and their associated path.
  *
  * ### Example
  * ```js
@@ -35,7 +36,7 @@ const isArray = Array.isArray;
  * ```
  *
  * @param value   an object or array.
- * @returns       array of path value.
+ * @returns       a description object.
  */
 export function to(value: any): Description {
   const primitives: Array<{ path: Array<string | number>; value: any }> = [];

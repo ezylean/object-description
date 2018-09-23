@@ -1,7 +1,7 @@
 import { Description } from './description';
 
 /**
- * Convert an array of path-value in it's exact object/array representation
+ * Convert an object/array description in it's exact representation.
  *
  * ### Example
  * ```js
@@ -16,7 +16,7 @@ import { Description } from './description';
  * // => { value: true, lvl1: { lvl2: [ [ undefined, { '50': false } ] ] } }
  * ```
  *
- * @param value   array of path value.
+ * @param value   a description object.
  * @returns       an object or array.
  */
 export function from(description: Description): any {
