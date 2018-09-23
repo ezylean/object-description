@@ -7,7 +7,7 @@
   "module": "build/module/index.js",
   "repository": "https://github.com/ezylean/object-description",
   "license": "MIT",
-  "keywords": [],
+  "keywords": ["flatten", "unflatten", "nested"],
   "scripts": {
     "info": "npm-scripts-info",
     "build": "run-s clean && run-p build:*",
