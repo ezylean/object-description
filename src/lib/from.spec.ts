@@ -102,3 +102,16 @@ test('README second exemple', t => {
 
   t.deepEqual(flatten, expected);
 });
+
+test('simple object without is_array flag', t => {
+  const description = {
+    primitives: [
+      { path: ['value'], value: true },
+      { path: ['anotherValue'], value: false }
+    ]
+  };
+
+  const expected = { value: true, anotherValue: false };
+
+  t.deepEqual(from(description), expected);
+});
