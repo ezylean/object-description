@@ -1,13 +1,17 @@
 {
   "name": "@ezy/object-description",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "a more robust representation for flatten objects",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
   "repository": "https://github.com/ezylean/object-description",
   "license": "MIT",
-  "keywords": ["flatten", "unflatten", "nested"],
+  "keywords": [
+    "flatten",
+    "unflatten",
+    "nested"
+  ],
   "scripts": {
     "info": "npm-scripts-info",
     "build": "run-s clean && run-p build:*",
