@@ -38,8 +38,12 @@
 <a href="https://npm.runkit.com/@ezy/object-description">
   <img src="https://img.shields.io/badge/runkit-try%20now-%236967CA.svg" alt="Runkit: try now" />
 </a>
-<img src="https://img.shields.io/bundlephobia/min/@ezy/object-description.svg" alt="minified size" />
-<img src="https://img.shields.io/bundlephobia/minzip/@ezy/object-description.svg" alt="minzipped size" />
+<a href="https://bundlephobia.com/result?p=@ezy/object-description">
+  <img src="https://img.shields.io/bundlephobia/min/@ezy/object-description.svg" alt="minified size" />
+</a>
+<a href="https://bundlephobia.com/result?p=@ezy/object-description">
+  <img src="https://img.shields.io/bundlephobia/minzip/@ezy/object-description.svg" alt="minzipped size" />
+</a>
 </p>
 
 ## Why
