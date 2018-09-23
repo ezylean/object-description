@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/ezylean/object-description/compare/v1.0.3...v2.0.0) (2018-09-23)
+
+
+### Bug Fixes
+
+* **all:** handle empty objects/arrays ([25230a7](https://github.com/ezylean/object-description/commit/25230a7))
+
+
+### BREAKING CHANGES
+
+* **all:** Description format is now an object
+
+handle empty objects/arrays
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/ezylean/object-description/compare/v1.0.2...v1.0.3) (2018-09-22)
 
