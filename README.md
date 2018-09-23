@@ -1,6 +1,6 @@
-<p align="center">
+<h1 align="center">
   <img src="https://fakeimg.pl/900x300/ffffff/333333/?text=object+description&font=museo" alt="object description" width="900px" />
-</p>
+</h1>
 
 <p align="center">a more robust representation for flatten objects/arrays.</p>
 
@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/github/license/ezylean/object-description.svg" alt="License" />
 </a>
 <a href="https://circleci.com/gh/ezylean/object-description/tree/master">
-  <img src="https://circleci.com/gh/ezylean/object-description/tree/master.svg?style=shield" alt="CircleCI" />
+  <img src="https://circleci.com/gh/ezylean/object-description/tree/master.svg" alt="CircleCI" />
 </a>
 <a href="https://codecov.io/gh/ezylean/object-description">
   <img src="https://codecov.io/gh/ezylean/object-description/branch/master/graph/badge.svg" alt="codecov" />
@@ -35,8 +35,10 @@
 <a href="https://github.com/prettier/prettier">
   <img src="https://img.shields.io/badge/code%20style-prettier-ff69b4.svg" alt="Code style: prettier" />
 </a>
+<a href="https://npm.runkit.com/@ezy/object-description">
+  <img src="https://img.shields.io/badge/runkit-try%20now-%236967CA.svg" alt="Runkit: try now" />
+</a>
 </p>
-
 
 ## Why
 
@@ -45,7 +47,7 @@ flatten/unflatten libraries relies on string based notation for paths leading to
 ## Install
 
 ```shell
-npm install @ezy/object-description
+npm i @ezy/object-description
 ```
 
 ## Usage
@@ -53,20 +55,18 @@ npm install @ezy/object-description
 ### iterate over values
 
 ```js
-import { to as toDescription } from '@ezy/object-description'
+import { to as toDescription } from '@ezy/object-description';
 
-const flatten = toDescription({ 
-    value: true, 
-    lvl1: { 
-        lvl2: [ 
-            [ undefined, { 50: false } ] 
-        ]
-    } 
+const desc = toDescription({
+  value: true,
+  lvl1: {
+    lvl2: [[undefined, { 50: false }]]
+  }
 });
 
-for (const { path, value } of flatten) {
-    console.log(path);
-    console.log(value);
+for (const { path, value } of desc.primitives) {
+  console.log(path);
+  console.log(value);
 }
 
 // ['value']
@@ -75,35 +75,44 @@ for (const { path, value } of flatten) {
 // false
 ```
 
-### change all values 
+### change all values
 
 ```js
-import { from as fromDescription , to as toDescription } from '@ezy/object-description'
+import {
+  from as fromDescription,
+  to as toDescription
+} from '@ezy/object-description';
 
-const flatten = toDescription({ 
-    value: true, 
-    lvl1: { 
-        lvl2: [ 
-            [ undefined, { 50: false } ] 
-        ]
-    } 
+const desc = toDescription({
+  value: true,
+  lvl1: {
+    lvl2: [[undefined, { 50: false }]]
+  }
 });
 
-const stringified = fromDescription(flatten.map(({ path, value }) => { 
-    return { path, value: value.toString() }; 
-}))
+const stringified = fromDescription({
+  is_array: desc.is_array,
+  primitives: desc.primitives.map(({ path, value }) => {
+    return { path, value: value.toString() };
+  })
+});
 
 console.log(stringified);
 
-// { 
-//     value: "true", 
-//     lvl1: { 
-//         lvl2: [ 
-//             [ undefined, { 50: "false" } ] 
+// {
+//     value: "true",
+//     lvl1: {
+//         lvl2: [
+//             [ undefined, { 50: "false" } ]
 //         ]
-//     } 
+//     }
 // })
 ```
+
+## Links
+
+- [API docs](https://ezylean.github.io/object-description)
+- [Playground](https://npm.runkit.com/@ezy/object-description)
 
 ## See also
 

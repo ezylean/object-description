@@ -3,10 +3,13 @@ import test from 'ava';
 import { from } from './from';
 
 test('simple object', t => {
-  const description = [
-    { path: ['value'], value: true },
-    { path: ['anotherValue'], value: false }
-  ];
+  const description = {
+    is_array: false,
+    primitives: [
+      { path: ['value'], value: true },
+      { path: ['anotherValue'], value: false }
+    ]
+  };
 
   const expected = { value: true, anotherValue: false };
 
@@ -14,10 +17,13 @@ test('simple object', t => {
 });
 
 test('nested object', t => {
-  const description = [
-    { path: ['anotherValue'], value: false },
-    { path: ['value', 'nested'], value: true }
-  ];
+  const description = {
+    is_array: false,
+    primitives: [
+      { path: ['anotherValue'], value: false },
+      { path: ['value', 'nested'], value: true }
+    ]
+  };
 
   const expected = { value: { nested: true }, anotherValue: false };
 
@@ -25,11 +31,14 @@ test('nested object', t => {
 });
 
 test('nested w array', t => {
-  const description = [
-    { path: ['anotherValue'], value: false },
-    { path: ['value', 'nested', 0], value: 'hello' },
-    { path: ['value', 'nested', 1], value: 'world' }
-  ];
+  const description = {
+    is_array: false,
+    primitives: [
+      { path: ['anotherValue'], value: false },
+      { path: ['value', 'nested', 0], value: 'hello' },
+      { path: ['value', 'nested', 1], value: 'world' }
+    ]
+  };
 
   const expected = {
     anotherValue: false,
@@ -40,12 +49,56 @@ test('nested w array', t => {
 });
 
 test('simple array', t => {
-  const description = [
-    { path: [0], value: 'hello' },
-    { path: [1], value: 'world' }
-  ];
+  const description = {
+    is_array: true,
+    primitives: [{ path: [0], value: 'hello' }, { path: [1], value: 'world' }]
+  };
 
   const expected = ['hello', 'world'];
 
   t.deepEqual(from(description), expected);
+});
+
+test('get empty objects/array decription', t => {
+  t.deepEqual(
+    from({
+      is_array: false,
+      primitives: []
+    }),
+    {}
+  );
+
+  t.deepEqual(
+    from({
+      is_array: true,
+      primitives: []
+    }),
+    []
+  );
+});
+
+test('README second exemple', t => {
+  const desc = {
+    is_array: false,
+    primitives: [
+      { path: ['value'], value: true },
+      { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }
+    ]
+  };
+
+  const flatten = from({
+    is_array: false,
+    primitives: desc.primitives.map(({ path, value }) => {
+      return { path, value: value.toString() };
+    })
+  });
+
+  const expected = {
+    lvl1: {
+      lvl2: [[undefined, { 50: 'false' }]]
+    },
+    value: 'true'
+  };
+
+  t.deepEqual(flatten, expected);
 });
