@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/github/license/ezylean/object-description.svg" alt="License" />
 </a>
 <a href="https://circleci.com/gh/ezylean/object-description/tree/master">
-  <img src="https://circleci.com/gh/ezylean/object-description/tree/master.svg" alt="CircleCI" />
+  <img src="https://circleci.com/gh/ezylean/object-description/tree/master.svg?style=shield" alt="CircleCI" />
 </a>
 <a href="https://codecov.io/gh/ezylean/object-description">
   <img src="https://codecov.io/gh/ezylean/object-description/branch/master/graph/badge.svg" alt="codecov" />
@@ -38,6 +38,8 @@
 <a href="https://npm.runkit.com/@ezy/object-description">
   <img src="https://img.shields.io/badge/runkit-try%20now-%236967CA.svg" alt="Runkit: try now" />
 </a>
+<img src="https://img.shields.io/bundlephobia/min/@ezy/object-description.svg" alt="minified size" />
+<img src="https://img.shields.io/bundlephobia/minzip/@ezy/object-description.svg" alt="minzipped size" />
 </p>
 
 ## Why
