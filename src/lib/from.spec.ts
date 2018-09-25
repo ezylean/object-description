@@ -129,3 +129,26 @@ test('simple circular reference', t => {
 
   t.deepEqual(from(description), expected);
 });
+
+test('nested object with circular references', t => {
+  const description = {
+    primitives: [{ path: ['someprop'], value: 'something' }],
+    references: [
+      { path: ['lvl1', 'lvl2', 'imcircular'], target: [] },
+      { path: ['lvl1', 'lvl2', 'anothercircular'], target: ['lvl1'] },
+      { path: ['lvl1', 'lvl2', 'undefinedreference'], target: ['not', 'found'] }
+    ]
+  };
+
+  const expected: any = {
+    someprop: 'something'
+  };
+  expected.lvl1 = {
+    lvl2: {
+      imcircular: expected
+    }
+  };
+  expected.lvl1.lvl2.anothercircular = expected.lvl1;
+
+  t.deepEqual(from(description), expected);
+});

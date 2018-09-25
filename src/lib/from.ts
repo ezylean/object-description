@@ -40,7 +40,14 @@ export function from({ is_array, primitives, references }: Description): any {
         }
         node = node[key];
       } else {
-        node[key] = target ? getByPath(target, result) : value;
+        if (target) {
+          const targetedValue = getByPath(target, result);
+          if (targetedValue !== undefined) {
+            node[key] = targetedValue;
+          }
+        } else {
+          node[key] = value;
+        }
       }
     }
   }
