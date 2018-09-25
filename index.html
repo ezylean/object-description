@@ -163,6 +163,31 @@
 <span class="hljs-comment">//         ]</span>
 <span class="hljs-comment">//     }</span>
 <span class="hljs-comment">// }</span></code></pre>
+				<h3 id="circular-references-support">circular references support</h3>
+				<p>deep clone made easy</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> {
+  <span class="hljs-keyword">from</span> <span class="hljs-keyword">as</span> fromDescription,
+  to <span class="hljs-keyword">as</span> toDescription
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'@ezy/object-description'</span>;
+
+<span class="hljs-keyword">const</span> original: any = {
+  <span class="hljs-attr">someprop</span>: <span class="hljs-string">'something'</span>
+};
+original.imcircular = original;
+
+<span class="hljs-keyword">const</span> desc = toDescription(original);
+<span class="hljs-built_in">console</span>.log(desc);
+<span class="hljs-comment">// =&gt; {</span>
+<span class="hljs-comment">//   primitives: [{ path: ['someprop'], value: 'something' }],</span>
+<span class="hljs-comment">//   references: [{ path: ['imcircular'], target: [] }]</span>
+<span class="hljs-comment">// }</span>
+
+<span class="hljs-keyword">const</span> clone = fromDescription(desc);
+<span class="hljs-built_in">console</span>.log(clone);
+<span class="hljs-comment">// =&gt; {</span>
+<span class="hljs-comment">//   someprop: 'something',</span>
+<span class="hljs-comment">//   imcircular: [Circular]</span>
+<span class="hljs-comment">// }</span></code></pre>
 				<h2 id="links">Links</h2>
 				<ul>
 					<li><a href="https://ezylean.github.io/object-description">API docs</a></li>
@@ -193,11 +218,20 @@
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/description.html" class="tsd-kind-icon">Description</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#path" class="tsd-kind-icon">Path</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="globals.html#values" class="tsd-kind-icon">Values</a>
+					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#isarray" class="tsd-kind-icon">is<wbr>Array</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#from" class="tsd-kind-icon">from</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getbypath" class="tsd-kind-icon">get<wbr>ByPath</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#isprimitive" class="tsd-kind-icon">is<wbr>Primitive</a>
