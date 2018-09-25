@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/ezylean/object-description/compare/v2.0.6...v3.0.0) (2018-09-25)
+
+
+### Features
+
+* **all:** add support for objects with circular references ([444939e](https://github.com/ezylean/object-description/commit/444939e))
+
+
+### BREAKING CHANGES
+
+* **all:** to function do not set the optional 'is_array' flag to false anymore when it's an
+object
+
+
+
 <a name="2.0.6"></a>
 ## [2.0.6](https://github.com/ezylean/object-description/compare/v2.0.5...v2.0.6) (2018-09-23)
 
