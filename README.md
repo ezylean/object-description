@@ -115,6 +115,36 @@ console.log(stringified);
 // }
 ```
 
+### circular references support
+
+deep clone made easy
+
+```js
+import {
+  from as fromDescription,
+  to as toDescription
+} from '@ezy/object-description';
+
+const original: any = {
+  someprop: 'something'
+};
+original.imcircular = original;
+
+const desc = toDescription(original);
+console.log(desc);
+// => {
+//   primitives: [{ path: ['someprop'], value: 'something' }],
+//   references: [{ path: ['imcircular'], target: [] }]
+// }
+
+const clone = fromDescription(desc);
+console.log(clone);
+// => {
+//   someprop: 'something',
+//   imcircular: [Circular]
+// }
+```
+
 ## Links
 
 - [API docs](https://ezylean.github.io/object-description)

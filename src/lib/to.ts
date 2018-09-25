@@ -1,4 +1,5 @@
-import { Description } from './description';
+import { Description, Path } from './description';
+
 /**
  * check if a given value is a javascript primitive
  */
@@ -27,7 +28,6 @@ const isArray = Array.isArray;
  *   }
  * }))
  * // => {
- * // is_array: false,
  * // primitives: [
  * //   { path: ['value'], value: true },
  * //   { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }
@@ -39,28 +39,47 @@ const isArray = Array.isArray;
  * @returns       a description object.
  */
 export function to(value: any): Description {
-  const primitives: Array<{ path: Array<string | number>; value: any }> = [];
-  const nodes = [{ path: [] as Array<string | number>, value }];
+  const primitives: Array<{ path: Path; value: any }> = [];
+  const references: Array<{ path: Path; target: Path }> = [];
+
+  const memory = new Map<any, Path>();
+  memory.set(value, []);
+
+  const nodes = [{ path: [] as Path, value }];
 
   while (nodes.length > 0) {
-    const node = nodes.pop();
+    const currentNode = nodes.pop();
 
-    for (const key in node.value) {
-      if (node.value.hasOwnProperty(key)) {
-        const path = node.path.concat(isArray(node.value) ? Number(key) : key);
-        const primitive = { path, value: node.value[key] };
+    for (const key in currentNode.value) {
+      if (currentNode.value.hasOwnProperty(key)) {
+        const path = currentNode.path.concat(
+          isArray(currentNode.value) ? Number(key) : key
+        );
+        const node = { path, value: currentNode.value[key] };
 
-        if (!isPrimitive(primitive.value)) {
-          nodes.unshift(primitive);
-        } else if (primitive.value !== undefined) {
-          primitives.push(primitive);
+        if (memory.has(node.value)) {
+          references.push({ path: node.path, target: memory.get(node.value) });
+        } else if (!isPrimitive(node.value)) {
+          nodes.unshift(node);
+          memory.set(node.value, node.path);
+        } else if (node.value !== undefined) {
+          primitives.push(node);
         }
       }
     }
   }
 
-  return {
-    is_array: isArray(value),
-    primitives
-  };
+  memory.clear();
+
+  const description: Description = { primitives };
+
+  if (isArray(value)) {
+    description.is_array = true;
+  }
+
+  if (references.length > 0) {
+    description.references = references;
+  }
+
+  return description;
 }

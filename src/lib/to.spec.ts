@@ -7,7 +7,6 @@ test('simple object', t => {
   const obj = { value: true, anotherValue: false };
 
   const expected = {
-    is_array: false,
     primitives: [
       { path: ['value'], value: true },
       { path: ['anotherValue'], value: false }
@@ -21,7 +20,6 @@ test('nested object', t => {
   const obj = { value: { nested: true }, anotherValue: false };
 
   const expected = {
-    is_array: false,
     primitives: [
       { path: ['anotherValue'], value: false },
       { path: ['value', 'nested'], value: true }
@@ -35,7 +33,6 @@ test('nested w array', t => {
   const obj = { value: { nested: ['hello', 'world'] }, anotherValue: false };
 
   const expected = {
-    is_array: false,
     primitives: [
       { path: ['anotherValue'], value: false },
       { path: ['value', 'nested', 0], value: 'hello' },
@@ -70,7 +67,6 @@ test('support classic classes', t => {
   const obj = { users: [new User('hubert', 22), new User('john', 25)] };
 
   const expected = {
-    is_array: false,
     primitives: [
       { path: ['users', 0, 'name'], value: 'hubert' },
       { path: ['users', 0, 'age'], value: 22 },
@@ -94,7 +90,6 @@ test('support es6 classes', t => {
   const obj = { users: [new User('hubert', 22), new User('john', 25)] };
 
   const expected = {
-    is_array: false,
     primitives: [
       { path: ['users', 0, 'name'], value: 'hubert' },
       { path: ['users', 0, 'age'], value: 22 },
@@ -110,7 +105,6 @@ test('undefined values are not preserved', t => {
   const obj = { value: true, anotherValue: false, imaghost: undefined };
 
   const expected = {
-    is_array: false,
     primitives: [
       { path: ['value'], value: true },
       { path: ['anotherValue'], value: false }
@@ -122,7 +116,6 @@ test('undefined values are not preserved', t => {
 
 test('get empty objects/array decription', t => {
   t.deepEqual(to({}), {
-    is_array: false,
     primitives: []
   });
 
@@ -141,11 +134,26 @@ test('README first exemple', t => {
   });
 
   const expected = {
-    is_array: false,
     primitives: [
       { path: ['value'], value: true },
       { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }
     ]
+  };
+
+  t.deepEqual(flatten, expected);
+});
+
+test('simple circular reference', t => {
+  const obj: any = {
+    someprop: 'something'
+  };
+  obj.imcircular = obj;
+
+  const flatten = to(obj);
+
+  const expected = {
+    primitives: [{ path: ['someprop'], value: 'something' }],
+    references: [{ path: ['imcircular'], target: [] }]
   };
 
   t.deepEqual(flatten, expected);

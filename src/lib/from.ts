@@ -1,4 +1,10 @@
-import { Description } from './description';
+import { Description, Path } from './description';
+
+type Values = Array<{
+  path: Path;
+  value?: any;
+  target?: Path;
+}>;
 
 /**
  * Convert an object/array description in it's exact representation.
@@ -19,10 +25,11 @@ import { Description } from './description';
  * @param value   a description object.
  * @returns       an object or array.
  */
-export function from(description: Description): any {
-  const result = description.is_array ? [] : {};
+export function from({ is_array, primitives, references }: Description): any {
+  const result = is_array ? [] : {};
+  const values: Values = (primitives as Values).concat(references || []);
 
-  for (const { path, value } of description.primitives) {
+  for (const { path, value, target } of values) {
     let node = result;
     for (let index = 0; index < path.length; index++) {
       const key = path[index];
@@ -33,10 +40,32 @@ export function from(description: Description): any {
         }
         node = node[key];
       } else {
-        node[key] = value;
+        node[key] = target ? getByPath(target, result) : value;
       }
     }
   }
 
   return result;
+}
+
+/**
+ * Retrieve the value at a given path.
+ *
+ * @param paths   The path to use.
+ * @param obj     The object to retrieve the nested property from.
+ * @returns       The data at `path`.
+ *
+ * @source: https://github.com/ramda/ramda/blob/v0.25.0/source/path.js
+ */
+function getByPath(paths, obj) {
+  let val = obj;
+  let idx = 0;
+  while (idx < paths.length) {
+    if (val == null) {
+      return;
+    }
+    val = val[paths[idx]];
+    idx += 1;
+  }
+  return val;
 }

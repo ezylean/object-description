@@ -115,3 +115,17 @@ test('simple object without is_array flag', t => {
 
   t.deepEqual(from(description), expected);
 });
+
+test('simple circular reference', t => {
+  const description = {
+    primitives: [{ path: ['someprop'], value: 'something' }],
+    references: [{ path: ['imcircular'], target: [] }]
+  };
+
+  const expected: any = {
+    someprop: 'something'
+  };
+  expected.imcircular = expected;
+
+  t.deepEqual(from(description), expected);
+});
