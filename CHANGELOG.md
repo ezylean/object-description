@@ -1,6 +1,15 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [3.0.1](https://github.com/ezylean/object-description/compare/v3.0.0...v3.0.1) (2019-07-17)
+
+
+### Build System
+
+* **package.json:** update dev dependencies ([78e98d6](https://github.com/ezylean/object-description/commit/78e98d6))
+
+
 
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/ezylean/object-description/compare/v2.0.6...v3.0.0) (2018-09-25)
