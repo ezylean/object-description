@@ -70,7 +70,7 @@ const desc = toDescription({
   }
 });
 
-for (const { path, value } of desc.primitives) {
+for (const { path, value } of desc.values) {
   console.log(path);
   console.log(value);
 }
@@ -98,7 +98,7 @@ const desc = toDescription({
 
 const stringified = fromDescription({
   is_array: desc.is_array,
-  primitives: desc.primitives.map(({ path, value }) => {
+  values: desc.values.map(({ path, value }) => {
     return { path, value: value.toString() };
   })
 });
@@ -133,7 +133,7 @@ original.imcircular = original;
 const desc = toDescription(original);
 console.log(desc);
 // => {
-//   primitives: [{ path: ['someprop'], value: 'something' }],
+//   values: [{ path: ['someprop'], value: 'something' }],
 //   references: [{ path: ['imcircular'], target: [] }]
 // }
 

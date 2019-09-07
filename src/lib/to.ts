@@ -13,7 +13,7 @@ function defaultIsValue(value) {
 
 /**
  * Convert any object/array into a description object
- * with all primitives values and their associated path.
+ * with all values values and their associated path.
  *
  * ### Example
  * ```js
@@ -27,7 +27,7 @@ function defaultIsValue(value) {
  *   }
  * }))
  * // => {
- * // primitives: [
+ * // values: [
  * //   { path: ['value'], value: true },
  * //   { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }
  * // ]
