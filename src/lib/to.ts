@@ -1,7 +1,7 @@
 import { Description, Path } from './description';
 
 /**
- * check if a given value is a javascript primitive
+ * check if a given value is a literal Object or an Array
  */
 function defaultIsValue(value) {
   const type = Object.prototype.toString.call(value).slice(8, -1);

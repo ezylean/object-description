@@ -7,6 +7,13 @@ type Values = Array<{
 }>;
 
 /**
+ * assign a value to a target object or array
+ */
+function defaultAssignValue(target, prop, value) {
+  target[prop] = value;
+}
+
+/**
  * Convert an object/array description in it's exact representation.
  *
  * ### Example
@@ -25,7 +32,10 @@ type Values = Array<{
  * @param value   a description object.
  * @returns       an object or array.
  */
-export function from({ is_array, values, references }: Description): any {
+export function from(
+  { is_array, values, references }: Description,
+  assignValue = defaultAssignValue
+): any {
   const result = is_array ? [] : {};
   const valuesAndRefs: Values = (values as Values).concat(references || []);
 
@@ -43,10 +53,10 @@ export function from({ is_array, values, references }: Description): any {
         if (target) {
           const targetedValue = getByPath(target, result);
           if (targetedValue !== undefined) {
-            node[key] = targetedValue;
+            assignValue(node, key, targetedValue);
           }
         } else {
-          node[key] = value;
+          assignValue(node, key, value);
         }
       }
     }
