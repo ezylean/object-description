@@ -7,32 +7,40 @@ test('simple object', t => {
   const obj = { value: true, anotherValue: false };
 
   const expected = {
+    Ctor: Object,
     values: [
       { path: ['value'], value: true },
       { path: ['anotherValue'], value: false }
     ]
   };
 
-  t.deepEqual(to(obj), expected);
+  t.deepEqual(to(obj, true), expected);
 });
 
 test('nested object', t => {
   const obj = { value: { nested: true }, anotherValue: false };
 
   const expected = {
+    Ctor: Object,
+    structures: [{ path: ['value'], Ctor: Object }],
     values: [
       { path: ['anotherValue'], value: false },
       { path: ['value', 'nested'], value: true }
     ]
   };
 
-  t.deepEqual(to(obj), expected);
+  t.deepEqual(to(obj, true), expected);
 });
 
 test('nested w array', t => {
   const obj = { value: { nested: ['hello', 'world'] }, anotherValue: false };
 
   const expected = {
+    Ctor: Object,
+    structures: [
+      { path: ['value'], Ctor: Object },
+      { path: ['value', 'nested'], Ctor: Array }
+    ],
     values: [
       { path: ['anotherValue'], value: false },
       { path: ['value', 'nested', 0], value: 'hello' },
@@ -40,18 +48,18 @@ test('nested w array', t => {
     ]
   };
 
-  t.deepEqual(to(obj), expected);
+  t.deepEqual(to(obj, true), expected);
 });
 
 test('simple array', t => {
   const obj = ['hello', 'world'];
 
   const expected = {
-    is_array: true,
+    Ctor: Array,
     values: [{ path: [0], value: 'hello' }, { path: [1], value: 'world' }]
   };
 
-  t.deepEqual(to(obj), expected);
+  t.deepEqual(to(obj, true), expected);
 });
 
 test('support classic classes', t => {
@@ -67,13 +75,16 @@ test('support classic classes', t => {
   const obj = { users: [new User('hubert', 22), new User('john', 25)] };
 
   const expected = {
+    Ctor: Object,
+
+    structures: [{ path: ['users'], Ctor: Array }],
     values: [
       { path: ['users', 0], value: new User('hubert', 22) },
       { path: ['users', 1], value: new User('john', 25) }
     ]
   };
 
-  t.deepEqual(to(obj), expected);
+  t.deepEqual(to(obj, true), expected);
 });
 
 test('support es6 classes', t => {
@@ -88,35 +99,40 @@ test('support es6 classes', t => {
   const obj = { users: [new User('hubert', 22), new User('john', 25)] };
 
   const expected = {
+    Ctor: Object,
+
+    structures: [{ path: ['users'], Ctor: Array }],
     values: [
       { path: ['users', 0], value: new User('hubert', 22) },
       { path: ['users', 1], value: new User('john', 25) }
     ]
   };
 
-  t.deepEqual(to(obj), expected);
+  t.deepEqual(to(obj, true), expected);
 });
 
 test('undefined values are not preserved', t => {
   const obj = { value: true, anotherValue: false, imaghost: undefined };
 
   const expected = {
+    Ctor: Object,
     values: [
       { path: ['value'], value: true },
       { path: ['anotherValue'], value: false }
     ]
   };
 
-  t.deepEqual(to(obj), expected);
+  t.deepEqual(to(obj, true), expected);
 });
 
 test('get empty objects/array decription', t => {
   t.deepEqual(to({}), {
+    Ctor: Object,
     values: []
   });
 
   t.deepEqual(to([]), {
-    is_array: true,
+    Ctor: Array,
     values: []
   });
 });
@@ -130,6 +146,35 @@ test('README first exemple', t => {
   });
 
   const expected = {
+    Ctor: Object,
+    values: [
+      { path: ['value'], value: true },
+      { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }
+    ]
+  };
+
+  t.deepEqual(flatten, expected);
+});
+
+test('README first exemple - register structs', t => {
+  const flatten = to(
+    {
+      lvl1: {
+        lvl2: [[undefined, { 50: false }]]
+      },
+      value: true
+    },
+    true
+  );
+
+  const expected = {
+    Ctor: Object,
+    structures: [
+      { path: ['lvl1'], Ctor: Object },
+      { path: ['lvl1', 'lvl2'], Ctor: Array },
+      { path: ['lvl1', 'lvl2', 0], Ctor: Array },
+      { path: ['lvl1', 'lvl2', 0, 1], Ctor: Object }
+    ],
     values: [
       { path: ['value'], value: true },
       { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }
@@ -148,6 +193,7 @@ test('simple circular reference', t => {
   const flatten = to(obj);
 
   const expected = {
+    Ctor: Object,
     references: [{ path: ['imcircular'], target: [] }],
     values: [{ path: ['someprop'], value: 'something' }]
   };

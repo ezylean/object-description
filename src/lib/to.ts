@@ -27,6 +27,7 @@ function defaultIsValue(value) {
  *   }
  * }))
  * // => {
+ * // Ctor: Object,
  * // values: [
  * //   { path: ['value'], value: true },
  * //   { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }
@@ -38,9 +39,14 @@ function defaultIsValue(value) {
  * @param isValue a function to check if the given object or primitive should be considered as a value (Optional)
  * @returns       a description object.
  */
-export function to(value: any, isValue = defaultIsValue): Description {
+export function to(
+  value: any,
+  registerStruct = false,
+  isValue = defaultIsValue
+): Description {
   const values: Array<{ path: Path; value: any }> = [];
   const references: Array<{ path: Path; target: Path }> = [];
+  const structures: Array<{ path: Path; Ctor: new () => any }> = [];
 
   const memory = new Map<any, Path>();
   memory.set(value, []);
@@ -59,11 +65,19 @@ export function to(value: any, isValue = defaultIsValue): Description {
 
         if (memory.has(node.value)) {
           references.push({ path: node.path, target: memory.get(node.value) });
-        } else if (!isValue(node.value)) {
-          nodes.unshift(node);
-          memory.set(node.value, node.path);
-        } else if (node.value !== undefined) {
-          values.push(node);
+        } else {
+          if (!isValue(node.value)) {
+            nodes.unshift(node);
+            memory.set(node.value, node.path);
+            if (registerStruct) {
+              structures.push({
+                Ctor: node.value.constructor,
+                path: node.path
+              });
+            }
+          } else if (node.value !== undefined) {
+            values.push(node);
+          }
         }
       }
     }
@@ -71,10 +85,13 @@ export function to(value: any, isValue = defaultIsValue): Description {
 
   memory.clear();
 
-  const description: Description = { values };
+  const description: Description = {
+    Ctor: value.constructor,
+    values
+  };
 
-  if (Array.isArray(value)) {
-    description.is_array = true;
+  if (structures.length > 0) {
+    description.structures = structures;
   }
 
   if (references.length > 0) {

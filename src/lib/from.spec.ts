@@ -4,7 +4,7 @@ import { from } from './from';
 
 test('simple object', t => {
   const description = {
-    is_array: false,
+    Ctor: Object,
     values: [
       { path: ['value'], value: true },
       { path: ['anotherValue'], value: false }
@@ -18,7 +18,7 @@ test('simple object', t => {
 
 test('nested object', t => {
   const description = {
-    is_array: false,
+    Ctor: Object,
     values: [
       { path: ['anotherValue'], value: false },
       { path: ['value', 'nested'], value: true }
@@ -32,7 +32,29 @@ test('nested object', t => {
 
 test('nested w array', t => {
   const description = {
-    is_array: false,
+    Ctor: Object,
+    values: [
+      { path: ['anotherValue'], value: false },
+      { path: ['value', 'nested', 0], value: 'hello' },
+      { path: ['value', 'nested', 1], value: 'world' }
+    ]
+  };
+
+  const expected = {
+    anotherValue: false,
+    value: { nested: ['hello', 'world'] }
+  };
+
+  t.deepEqual(from(description), expected);
+});
+
+test('nested w array and structures', t => {
+  const description = {
+    Ctor: Object,
+    structures: [
+      { path: ['value'], Ctor: Object },
+      { path: ['value', 'nested'], Ctor: Array }
+    ],
     values: [
       { path: ['anotherValue'], value: false },
       { path: ['value', 'nested', 0], value: 'hello' },
@@ -50,7 +72,7 @@ test('nested w array', t => {
 
 test('simple array', t => {
   const description = {
-    is_array: true,
+    Ctor: Array,
     values: [{ path: [0], value: 'hello' }, { path: [1], value: 'world' }]
   };
 
@@ -62,7 +84,7 @@ test('simple array', t => {
 test('get empty objects/array decription', t => {
   t.deepEqual(
     from({
-      is_array: false,
+      Ctor: Object,
       values: []
     }),
     {}
@@ -70,7 +92,7 @@ test('get empty objects/array decription', t => {
 
   t.deepEqual(
     from({
-      is_array: true,
+      Ctor: Array,
       values: []
     }),
     []
@@ -79,7 +101,7 @@ test('get empty objects/array decription', t => {
 
 test('README second exemple', t => {
   const desc = {
-    is_array: false,
+    Ctor: Object,
     values: [
       { path: ['value'], value: true },
       { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }
@@ -87,7 +109,7 @@ test('README second exemple', t => {
   };
 
   const flatten = from({
-    is_array: false,
+    Ctor: Object,
     values: desc.values.map(({ path, value }) => {
       return { path, value: value.toString() };
     })
@@ -103,21 +125,9 @@ test('README second exemple', t => {
   t.deepEqual(flatten, expected);
 });
 
-test('simple object without is_array flag', t => {
-  const description = {
-    values: [
-      { path: ['value'], value: true },
-      { path: ['anotherValue'], value: false }
-    ]
-  };
-
-  const expected = { value: true, anotherValue: false };
-
-  t.deepEqual(from(description), expected);
-});
-
 test('simple circular reference', t => {
   const description = {
+    Ctor: Object,
     references: [{ path: ['imcircular'], target: [] }],
     values: [{ path: ['someprop'], value: 'something' }]
   };
@@ -132,6 +142,7 @@ test('simple circular reference', t => {
 
 test('nested object with circular references', t => {
   const description = {
+    Ctor: Object,
     references: [
       { path: ['lvl1', 'lvl2', 'imcircular'], target: [] },
       { path: ['lvl1', 'lvl2', 'anothercircular'], target: ['lvl1'] },
