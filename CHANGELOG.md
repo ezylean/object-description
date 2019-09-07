@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/ezylean/object-description/compare/v4.1.0...v5.0.0) (2019-09-07)
+
+
+### Features
+
+* **all:** add structures in description ([5e5713f](https://github.com/ezylean/object-description/commit/5e5713f))
+
+
+### BREAKING CHANGES
+
+* **all:** is_array removed in favor of Ctor
+
+
+
 ## [4.1.0](https://github.com/ezylean/object-description/compare/v4.0.1...v4.1.0) (2019-09-07)
 
 
