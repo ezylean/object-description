@@ -5,7 +5,7 @@ import { from } from './from';
 test('simple object', t => {
   const description = {
     is_array: false,
-    primitives: [
+    values: [
       { path: ['value'], value: true },
       { path: ['anotherValue'], value: false }
     ]
@@ -19,7 +19,7 @@ test('simple object', t => {
 test('nested object', t => {
   const description = {
     is_array: false,
-    primitives: [
+    values: [
       { path: ['anotherValue'], value: false },
       { path: ['value', 'nested'], value: true }
     ]
@@ -33,7 +33,7 @@ test('nested object', t => {
 test('nested w array', t => {
   const description = {
     is_array: false,
-    primitives: [
+    values: [
       { path: ['anotherValue'], value: false },
       { path: ['value', 'nested', 0], value: 'hello' },
       { path: ['value', 'nested', 1], value: 'world' }
@@ -51,7 +51,7 @@ test('nested w array', t => {
 test('simple array', t => {
   const description = {
     is_array: true,
-    primitives: [{ path: [0], value: 'hello' }, { path: [1], value: 'world' }]
+    values: [{ path: [0], value: 'hello' }, { path: [1], value: 'world' }]
   };
 
   const expected = ['hello', 'world'];
@@ -63,7 +63,7 @@ test('get empty objects/array decription', t => {
   t.deepEqual(
     from({
       is_array: false,
-      primitives: []
+      values: []
     }),
     {}
   );
@@ -71,7 +71,7 @@ test('get empty objects/array decription', t => {
   t.deepEqual(
     from({
       is_array: true,
-      primitives: []
+      values: []
     }),
     []
   );
@@ -80,7 +80,7 @@ test('get empty objects/array decription', t => {
 test('README second exemple', t => {
   const desc = {
     is_array: false,
-    primitives: [
+    values: [
       { path: ['value'], value: true },
       { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }
     ]
@@ -88,7 +88,7 @@ test('README second exemple', t => {
 
   const flatten = from({
     is_array: false,
-    primitives: desc.primitives.map(({ path, value }) => {
+    values: desc.values.map(({ path, value }) => {
       return { path, value: value.toString() };
     })
   });
@@ -105,7 +105,7 @@ test('README second exemple', t => {
 
 test('simple object without is_array flag', t => {
   const description = {
-    primitives: [
+    values: [
       { path: ['value'], value: true },
       { path: ['anotherValue'], value: false }
     ]
@@ -118,8 +118,8 @@ test('simple object without is_array flag', t => {
 
 test('simple circular reference', t => {
   const description = {
-    primitives: [{ path: ['someprop'], value: 'something' }],
-    references: [{ path: ['imcircular'], target: [] }]
+    references: [{ path: ['imcircular'], target: [] }],
+    values: [{ path: ['someprop'], value: 'something' }]
   };
 
   const expected: any = {
@@ -132,12 +132,12 @@ test('simple circular reference', t => {
 
 test('nested object with circular references', t => {
   const description = {
-    primitives: [{ path: ['someprop'], value: 'something' }],
     references: [
       { path: ['lvl1', 'lvl2', 'imcircular'], target: [] },
       { path: ['lvl1', 'lvl2', 'anothercircular'], target: ['lvl1'] },
       { path: ['lvl1', 'lvl2', 'undefinedreference'], target: ['not', 'found'] }
-    ]
+    ],
+    values: [{ path: ['someprop'], value: 'something' }]
   };
 
   const expected: any = {

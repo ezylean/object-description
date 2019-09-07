@@ -25,11 +25,11 @@ type Values = Array<{
  * @param value   a description object.
  * @returns       an object or array.
  */
-export function from({ is_array, primitives, references }: Description): any {
+export function from({ is_array, values, references }: Description): any {
   const result = is_array ? [] : {};
-  const values: Values = (primitives as Values).concat(references || []);
+  const valuesAndRefs: Values = (values as Values).concat(references || []);
 
-  for (const { path, value, target } of values) {
+  for (const { path, value, target } of valuesAndRefs) {
     let node = result;
     for (let index = 0; index < path.length; index++) {
       const key = path[index];

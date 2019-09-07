@@ -3,14 +3,13 @@ import { Description, Path } from './description';
 /**
  * check if a given value is a javascript primitive
  */
-function isPrimitive(value) {
-  return value !== Object(value);
+function defaultIsValue(value) {
+  const type = Object.prototype.toString.call(value).slice(8, -1);
+  return (
+    (type !== 'Array' && type !== 'Object') ||
+    (type === 'Object' && value.constructor !== Object)
+  );
 }
-
-/**
- * check if a given value is actually an array
- */
-const isArray = Array.isArray;
 
 /**
  * Convert any object/array into a description object
@@ -36,10 +35,11 @@ const isArray = Array.isArray;
  * ```
  *
  * @param value   an object or array.
+ * @param isValue a function to check if the given object or primitive should be considered as a value (Optional)
  * @returns       a description object.
  */
-export function to(value: any): Description {
-  const primitives: Array<{ path: Path; value: any }> = [];
+export function to(value: any, isValue = defaultIsValue): Description {
+  const values: Array<{ path: Path; value: any }> = [];
   const references: Array<{ path: Path; target: Path }> = [];
 
   const memory = new Map<any, Path>();
@@ -53,17 +53,17 @@ export function to(value: any): Description {
     for (const key in currentNode.value) {
       if (currentNode.value.hasOwnProperty(key)) {
         const path = currentNode.path.concat(
-          isArray(currentNode.value) ? Number(key) : key
+          Array.isArray(currentNode.value) ? Number(key) : key
         );
         const node = { path, value: currentNode.value[key] };
 
         if (memory.has(node.value)) {
           references.push({ path: node.path, target: memory.get(node.value) });
-        } else if (!isPrimitive(node.value)) {
+        } else if (!isValue(node.value)) {
           nodes.unshift(node);
           memory.set(node.value, node.path);
         } else if (node.value !== undefined) {
-          primitives.push(node);
+          values.push(node);
         }
       }
     }
@@ -71,9 +71,9 @@ export function to(value: any): Description {
 
   memory.clear();
 
-  const description: Description = { primitives };
+  const description: Description = { values };
 
-  if (isArray(value)) {
+  if (Array.isArray(value)) {
     description.is_array = true;
   }
 
