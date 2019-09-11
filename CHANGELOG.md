@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/ezylean/object-description/compare/v5.0.0...v6.0.0) (2019-09-11)
+
+
+### Features
+
+* **all:** to: move root constructor in structures, from: root constructor in now optional ([dc6956f](https://github.com/ezylean/object-description/commit/dc6956f))
+
+
+### BREAKING CHANGES
+
+* **all:** everything
+
+
+
 ## [5.0.0](https://github.com/ezylean/object-description/compare/v4.1.0...v5.0.0) (2019-09-07)
 
 
