@@ -42,22 +42,34 @@ function defaultAssignStructure(target, prop, Ctor) {
  */
 export function from(
   desc: Description,
+  destination: { object: any; property: string | number } | false = false,
   assignValue = defaultAssignValue,
   assignStructure = defaultAssignStructure
 ): any {
-  const result = new desc.Ctor();
-  const all: Values = (desc.structures || [])
+  if (!destination) {
+    destination = {
+      object: {},
+      property: 'result'
+    };
+  }
+  const structures = desc.structures || [];
+
+  if (desc.Ctor && (!structures[0] || structures[0].path.length !== 0)) {
+    structures.unshift({ path: [], Ctor: desc.Ctor });
+  }
+
+  const all: Values = structures
     // @ts-ignore
     .concat(desc.values)
     .concat(desc.references || []);
 
   for (const { path, Ctor, value, target } of all) {
-    let node = result;
-    for (let index = 0; index < path.length; index++) {
-      const key = path[index];
+    let node = destination;
+    for (let index = -1; index < path.length; index++) {
+      const key = index === -1 ? destination.property : path[index];
 
       if (index !== path.length - 1) {
-        if (!desc.structures && !node[key]) {
+        if (!node[key]) {
           node[key] = Number.isInteger(path[index + 1] as number) ? [] : {};
         }
         node = node[key];
@@ -65,7 +77,10 @@ export function from(
         if (Ctor) {
           assignStructure(node, key, Ctor);
         } else if (target) {
-          const targetedValue = getByPath(target, result);
+          const targetedValue = getByPath(
+            target,
+            destination[destination.property]
+          );
           if (targetedValue !== undefined) {
             assignValue(node, key, targetedValue);
           }
@@ -76,7 +91,7 @@ export function from(
     }
   }
 
-  return result;
+  return destination[destination.property];
 }
 
 /**

@@ -41,7 +41,7 @@ function defaultIsValue(value) {
  */
 export function to(
   value: any,
-  registerStruct = false,
+  complete = false,
   isValue = defaultIsValue
 ): Description {
   const values: Array<{ path: Path; value: any }> = [];
@@ -69,7 +69,7 @@ export function to(
           if (!isValue(node.value)) {
             nodes.unshift(node);
             memory.set(node.value, node.path);
-            if (registerStruct) {
+            if (complete) {
               structures.push({
                 Ctor: node.value.constructor,
                 path: node.path
@@ -86,12 +86,14 @@ export function to(
   memory.clear();
 
   const description: Description = {
-    Ctor: value.constructor,
     values
   };
 
-  if (structures.length > 0) {
+  if (complete) {
+    structures.unshift({ path: [], Ctor: value.constructor });
     description.structures = structures;
+  } else {
+    description.Ctor = value.constructor;
   }
 
   if (references.length > 0) {

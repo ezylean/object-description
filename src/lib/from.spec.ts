@@ -81,6 +81,15 @@ test('simple array', t => {
   t.deepEqual(from(description), expected);
 });
 
+test('minimal decription', t => {
+  t.deepEqual(
+    from({
+      values: []
+    }),
+    undefined
+  );
+});
+
 test('get empty objects/array decription', t => {
   t.deepEqual(
     from({

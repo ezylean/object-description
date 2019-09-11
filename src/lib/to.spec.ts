@@ -14,15 +14,14 @@ test('simple object', t => {
     ]
   };
 
-  t.deepEqual(to(obj, true), expected);
+  t.deepEqual(to(obj), expected);
 });
 
 test('nested object', t => {
   const obj = { value: { nested: true }, anotherValue: false };
 
   const expected = {
-    Ctor: Object,
-    structures: [{ path: ['value'], Ctor: Object }],
+    structures: [{ path: [], Ctor: Object }, { path: ['value'], Ctor: Object }],
     values: [
       { path: ['anotherValue'], value: false },
       { path: ['value', 'nested'], value: true }
@@ -36,8 +35,8 @@ test('nested w array', t => {
   const obj = { value: { nested: ['hello', 'world'] }, anotherValue: false };
 
   const expected = {
-    Ctor: Object,
     structures: [
+      { path: [], Ctor: Object },
       { path: ['value'], Ctor: Object },
       { path: ['value', 'nested'], Ctor: Array }
     ],
@@ -59,7 +58,7 @@ test('simple array', t => {
     values: [{ path: [0], value: 'hello' }, { path: [1], value: 'world' }]
   };
 
-  t.deepEqual(to(obj, true), expected);
+  t.deepEqual(to(obj), expected);
 });
 
 test('support classic classes', t => {
@@ -75,9 +74,7 @@ test('support classic classes', t => {
   const obj = { users: [new User('hubert', 22), new User('john', 25)] };
 
   const expected = {
-    Ctor: Object,
-
-    structures: [{ path: ['users'], Ctor: Array }],
+    structures: [{ path: [], Ctor: Object }, { path: ['users'], Ctor: Array }],
     values: [
       { path: ['users', 0], value: new User('hubert', 22) },
       { path: ['users', 1], value: new User('john', 25) }
@@ -99,9 +96,7 @@ test('support es6 classes', t => {
   const obj = { users: [new User('hubert', 22), new User('john', 25)] };
 
   const expected = {
-    Ctor: Object,
-
-    structures: [{ path: ['users'], Ctor: Array }],
+    structures: [{ path: [], Ctor: Object }, { path: ['users'], Ctor: Array }],
     values: [
       { path: ['users', 0], value: new User('hubert', 22) },
       { path: ['users', 1], value: new User('john', 25) }
@@ -122,7 +117,7 @@ test('undefined values are not preserved', t => {
     ]
   };
 
-  t.deepEqual(to(obj, true), expected);
+  t.deepEqual(to(obj), expected);
 });
 
 test('get empty objects/array decription', t => {
@@ -168,8 +163,8 @@ test('README first exemple - register structs', t => {
   );
 
   const expected = {
-    Ctor: Object,
     structures: [
+      { path: [], Ctor: Object },
       { path: ['lvl1'], Ctor: Object },
       { path: ['lvl1', 'lvl2'], Ctor: Array },
       { path: ['lvl1', 'lvl2', 0], Ctor: Array },
