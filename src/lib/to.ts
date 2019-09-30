@@ -42,7 +42,11 @@ function defaultIsValue(value) {
 export function to(
   value: any,
   complete = false,
-  isValue = defaultIsValue
+  isValue: (
+    value,
+    key?: string | number,
+    path?: Path
+  ) => boolean = defaultIsValue
 ): Description {
   const values: Array<{ path: Path; value: any }> = [];
   const references: Array<{ path: Path; target: Path }> = [];
@@ -66,7 +70,9 @@ export function to(
         if (memory.has(node.value)) {
           references.push({ path: node.path, target: memory.get(node.value) });
         } else {
-          if (!isValue(node.value)) {
+          if (
+            !isValue(node.value, node.path[node.path.length - 1], node.path)
+          ) {
             nodes.unshift(node);
             memory.set(node.value, node.path);
             if (complete) {
