@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.1.1](https://github.com/ezylean/object-description/compare/v7.1.0...v7.1.1) (2019-10-04)
+
+
+### Bug Fixes
+
+* **from:** structures overriding ([c6dd6c6](https://github.com/ezylean/object-description/commit/c6dd6c6))
+
+
+
 ## [7.1.0](https://github.com/ezylean/object-description/compare/v7.0.0...v7.1.0) (2019-10-04)
 
 
