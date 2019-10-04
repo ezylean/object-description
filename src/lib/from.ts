@@ -72,7 +72,7 @@ export function from(
         }
         node = node[key];
       } else {
-        if (Ctor) {
+        if (Ctor && (!node[key] || node[key].constructor !== Ctor)) {
           assignStructure(node, key, Ctor);
         } else if (target) {
           const targetedValue = getByPath(target, holder.result);
