@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/ezylean/object-description/compare/v6.1.0...v7.0.0) (2019-10-04)
+
+
+### Features
+
+* **from:** destination can now be passed directly ([754cb7d](https://github.com/ezylean/object-description/commit/754cb7d))
+
+
+### BREAKING CHANGES
+
+* **from:** from
+
+
+
 ## [6.1.0](https://github.com/ezylean/object-description/compare/v6.0.0...v6.1.0) (2019-09-30)
 
 
