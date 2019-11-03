@@ -109,12 +109,20 @@
 						<img src="https://img.shields.io/bundlephobia/minzip/@ezy/object-description.svg" alt="minzipped size" />
 					</a>
 				</p>
-				<h2 id="why">Why</h2>
+				<a href="#why" id="why" style="color: inherit; text-decoration: none;">
+					<h2>Why</h2>
+				</a>
 				<p>flatten/unflatten libraries relies on string based notation for paths leading to mismatches in conversions.</p>
-				<h2 id="install">Install</h2>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
 				<pre><code class="language-shell">npm i @ezy/object-description</code></pre>
-				<h2 id="usage">Usage</h2>
-				<h3 id="iterate-over-values">iterate over values</h3>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<a href="#iterate-over-values" id="iterate-over-values" style="color: inherit; text-decoration: none;">
+					<h3>iterate over values</h3>
+				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> { to <span class="hljs-keyword">as</span> toDescription } <span class="hljs-keyword">from</span> <span class="hljs-string">'@ezy/object-description'</span>;
 
 <span class="hljs-keyword">const</span> desc = toDescription({
@@ -124,7 +132,7 @@
   }
 });
 
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> { path, value } <span class="hljs-keyword">of</span> desc.primitives) {
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> { path, value } <span class="hljs-keyword">of</span> desc.values) {
   <span class="hljs-built_in">console</span>.log(path);
   <span class="hljs-built_in">console</span>.log(value);
 }
@@ -133,7 +141,9 @@
 <span class="hljs-comment">// true</span>
 <span class="hljs-comment">// ['lvl1', 'lvl2', 0, 1, '50']</span>
 <span class="hljs-comment">// false</span></code></pre>
-				<h3 id="change-all-values">change all values</h3>
+				<a href="#change-all-values" id="change-all-values" style="color: inherit; text-decoration: none;">
+					<h3>change all values</h3>
+				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> {
   <span class="hljs-keyword">from</span> <span class="hljs-keyword">as</span> fromDescription,
   to <span class="hljs-keyword">as</span> toDescription
@@ -147,8 +157,8 @@
 });
 
 <span class="hljs-keyword">const</span> stringified = fromDescription({
-  <span class="hljs-attr">is_array</span>: desc.is_array,
-  <span class="hljs-attr">primitives</span>: desc.primitives.map(<span class="hljs-function">(<span class="hljs-params">{ path, value }</span>) =&gt;</span> {
+  <span class="hljs-attr">Ctor</span>: desc.Ctor,
+  <span class="hljs-attr">values</span>: desc.values.map(<span class="hljs-function">(<span class="hljs-params">{ path, value }</span>) =&gt;</span> {
     <span class="hljs-keyword">return</span> { path, <span class="hljs-attr">value</span>: value.toString() };
   })
 });
@@ -163,7 +173,9 @@
 <span class="hljs-comment">//         ]</span>
 <span class="hljs-comment">//     }</span>
 <span class="hljs-comment">// }</span></code></pre>
-				<h3 id="circular-references-support">circular references support</h3>
+				<a href="#circular-references-support" id="circular-references-support" style="color: inherit; text-decoration: none;">
+					<h3>circular references support</h3>
+				</a>
 				<p>deep clone made easy</p>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> {
   <span class="hljs-keyword">from</span> <span class="hljs-keyword">as</span> fromDescription,
@@ -178,7 +190,8 @@ original.imcircular = original;
 <span class="hljs-keyword">const</span> desc = toDescription(original);
 <span class="hljs-built_in">console</span>.log(desc);
 <span class="hljs-comment">// =&gt; {</span>
-<span class="hljs-comment">//   primitives: [{ path: ['someprop'], value: 'something' }],</span>
+<span class="hljs-comment">//   Ctor: Object,</span>
+<span class="hljs-comment">//   values: [{ path: ['someprop'], value: 'something' }],</span>
 <span class="hljs-comment">//   references: [{ path: ['imcircular'], target: [] }]</span>
 <span class="hljs-comment">// }</span>
 
@@ -188,12 +201,16 @@ original.imcircular = original;
 <span class="hljs-comment">//   someprop: 'something',</span>
 <span class="hljs-comment">//   imcircular: [Circular]</span>
 <span class="hljs-comment">// }</span></code></pre>
-				<h2 id="links">Links</h2>
+				<a href="#links" id="links" style="color: inherit; text-decoration: none;">
+					<h2>Links</h2>
+				</a>
 				<ul>
 					<li><a href="https://ezylean.github.io/object-description">API docs</a></li>
 					<li><a href="https://npm.runkit.com/@ezy/object-description">Playground</a></li>
 				</ul>
-				<h2 id="see-also">See also</h2>
+				<a href="#see-also" id="see-also" style="color: inherit; text-decoration: none;">
+					<h2>See also</h2>
+				</a>
 				<ul>
 					<li><a href="https://ramdajs.com/docs/#assocPath">https://ramdajs.com/docs/#assocPath</a></li>
 					<li><a href="https://ramdajs.com/docs/#dissocPath">https://ramdajs.com/docs/#dissocPath</a></li>
@@ -224,17 +241,20 @@ original.imcircular = original;
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
 						<a href="globals.html#values" class="tsd-kind-icon">Values</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#isarray" class="tsd-kind-icon">is<wbr>Array</a>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#defaultassignstructure" class="tsd-kind-icon">default<wbr>Assign<wbr>Structure</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#defaultassignvalue" class="tsd-kind-icon">default<wbr>Assign<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#defaultisvalue" class="tsd-kind-icon">default<wbr>IsValue</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#from" class="tsd-kind-icon">from</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#getbypath" class="tsd-kind-icon">get<wbr>ByPath</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#isprimitive" class="tsd-kind-icon">is<wbr>Primitive</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#to" class="tsd-kind-icon">to</a>
@@ -256,6 +276,7 @@ original.imcircular = original;
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -304,7 +325,7 @@ original.imcircular = original;
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>

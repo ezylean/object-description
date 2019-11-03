@@ -80,18 +80,14 @@
 								<li class="tsd-kind-type-alias tsd-is-not-exported"><a href="globals.html#values" class="tsd-kind-icon">Values</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Variables</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#isarray" class="tsd-kind-icon">is<wbr>Array</a></li>
-							</ul>
-						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#defaultassignstructure" class="tsd-kind-icon">default<wbr>Assign<wbr>Structure</a></li>
+								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#defaultassignvalue" class="tsd-kind-icon">default<wbr>Assign<wbr>Value</a></li>
+								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#defaultisvalue" class="tsd-kind-icon">default<wbr>IsValue</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#from" class="tsd-kind-icon">from</a></li>
 								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#getbypath" class="tsd-kind-icon">get<wbr>ByPath</a></li>
-								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#isprimitive" class="tsd-kind-icon">is<wbr>Primitive</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#to" class="tsd-kind-icon">to</a></li>
 							</ul>
 						</section>
@@ -106,7 +102,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ezylean/object-description/blob/069c212/src/lib/description.ts#L1">lib/description.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/ezylean/object-description/blob/f3e1949/src/lib/description.ts#L1">lib/description.ts:1</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -116,53 +112,133 @@
 					<div class="tsd-signature tsd-kind-icon">Values<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ezylean/object-description/blob/069c212/src/lib/from.ts#L3">lib/from.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/ezylean/object-description/blob/f3e1949/src/lib/from.ts#L3">lib/from.ts:3</a></li>
 						</ul>
 					</aside>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
-					<a name="isarray" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Array</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Array<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">isArray</span><span class="tsd-signature-symbol"> =&nbsp;Array.isArray</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ezylean/object-description/blob/069c212/src/lib/to.ts#L13">lib/to.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>check if a given value is actually an array</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="from" class="tsd-anchor"></a>
-					<h3>from</h3>
-					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">from<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
+					<a name="defaultassignstructure" class="tsd-anchor"></a>
+					<h3>default<wbr>Assign<wbr>Structure</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">default<wbr>Assign<wbr>Structure<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, prop<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, Ctor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/069c212/src/lib/from.ts#L28">lib/from.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/f3e1949/src/lib/from.ts#L20">lib/from.ts:20</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>assign a structure to a target structure</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>prop: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>Ctor: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
+					<a name="defaultassignvalue" class="tsd-anchor"></a>
+					<h3>default<wbr>Assign<wbr>Value</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">default<wbr>Assign<wbr>Value<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, prop<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/f3e1949/src/lib/from.ts#L13">lib/from.ts:13</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>assign a value to a target structure</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>prop: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
+					<a name="defaultisvalue" class="tsd-anchor"></a>
+					<h3>default<wbr>IsValue</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">default<wbr>IsValue<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/f3e1949/src/lib/to.ts#L6">lib/to.ts:6</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>check if a given value is a literal Object or an Array</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="from" class="tsd-anchor"></a>
+					<h3>from</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">from<span class="tsd-signature-symbol">(</span>desc<span class="tsd-signature-symbol">: </span><a href="interfaces/description.html" class="tsd-signature-type">Description</a>, destination<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span>, assignValue<span class="tsd-signature-symbol">?: </span><a href="globals.html#defaultassignvalue" class="tsd-signature-type">defaultAssignValue</a>, assignStructure<span class="tsd-signature-symbol">?: </span><a href="globals.html#defaultassignstructure" class="tsd-signature-type">defaultAssignStructure</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/f3e1949/src/lib/from.ts#L43">lib/from.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Convert an object/array description in it&#39;s exact representation.</p>
 								</div>
-								<h3 id="example">Example</h3>
+								<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+									<h3>Example</h3>
+								</a>
 								<pre><code class="language-js"><span class="hljs-keyword">import</span> { <span class="hljs-keyword">from</span> <span class="hljs-keyword">as</span> fromDescription } <span class="hljs-keyword">from</span> <span class="hljs-string">'@ezy/object-description'</span>
 <span class="hljs-built_in">console</span>.log(fromDescription({
- <span class="hljs-attr">is_array</span>: <span class="hljs-literal">false</span>,
- <span class="hljs-attr">primitives</span>: [
+ <span class="hljs-attr">Ctor</span>: <span class="hljs-built_in">Object</span>,
+ <span class="hljs-attr">values</span>: [
   { <span class="hljs-attr">path</span>: [<span class="hljs-string">'value'</span>], <span class="hljs-attr">value</span>: <span class="hljs-literal">true</span> },
   { <span class="hljs-attr">path</span>: [<span class="hljs-string">'lvl1'</span>, <span class="hljs-string">'lvl2'</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'50'</span>], <span class="hljs-attr">value</span>: <span class="hljs-literal">false</span> }
 ]
@@ -172,18 +248,16 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter">
-											<h5>is_<wbr>array<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>primitives<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>references<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h5>
-										</li>
-									</ul>
+									<h5>desc: <a href="interfaces/description.html" class="tsd-signature-type">Description</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> destination: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> assignValue: <a href="globals.html#defaultassignvalue" class="tsd-signature-type">defaultAssignValue</a><span class="tsd-signature-symbol"> =&nbsp;defaultAssignValue</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> assignStructure: <a href="globals.html#defaultassignstructure" class="tsd-signature-type">defaultAssignStructure</a><span class="tsd-signature-symbol"> =&nbsp;defaultAssignStructure</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -201,7 +275,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/069c212/src/lib/from.ts#L67">lib/from.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/f3e1949/src/lib/from.ts#L103">lib/from.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -234,53 +308,27 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
-					<a name="isprimitive" class="tsd-anchor"></a>
-					<h3>is<wbr>Primitive</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Primitive<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/069c212/src/lib/to.ts#L6">lib/to.ts:6</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>check if a given value is a javascript primitive</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="to" class="tsd-anchor"></a>
 					<h3>to</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/description.html" class="tsd-signature-type">Description</a></li>
+						<li class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, complete<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, isValue<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/description.html" class="tsd-signature-type">Description</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/069c212/src/lib/to.ts#L41">lib/to.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/ezylean/object-description/blob/f3e1949/src/lib/to.ts#L42">lib/to.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Convert any object/array into a description object
-									with all primitives values and their associated path.</p>
+									with all values values and their associated path.</p>
 								</div>
-								<h3 id="example">Example</h3>
+								<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+									<h3>Example</h3>
+								</a>
 								<pre><code class="language-js"><span class="hljs-keyword">import</span> { to <span class="hljs-keyword">as</span> toDescription } <span class="hljs-keyword">from</span> <span class="hljs-string">'@ezy/object-description'</span>
 <span class="hljs-built_in">console</span>.log(toDescription({
    <span class="hljs-attr">value</span>: <span class="hljs-literal">true</span>,
@@ -291,7 +339,8 @@
   }
 }))
 <span class="hljs-comment">// =&gt; {</span>
-<span class="hljs-comment">// primitives: [</span>
+<span class="hljs-comment">// Ctor: Object,</span>
+<span class="hljs-comment">// values: [</span>
 <span class="hljs-comment">//   { path: ['value'], value: true },</span>
 <span class="hljs-comment">//   { path: ['lvl1', 'lvl2', 0, 1, '50'], value: false }</span>
 <span class="hljs-comment">// ]</span>
@@ -304,6 +353,39 @@
 									<div class="tsd-comment tsd-typography">
 										<p>an object or array.</p>
 									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> complete: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> isValue: <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;defaultIsValue</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a function to check if the given object or primitive should be considered as a value (Optional)</p>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, key<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, path<span class="tsd-signature-symbol">?: </span><a href="globals.html#path" class="tsd-signature-type">Path</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <span class="tsd-signature-type">any</span></h5>
+														</li>
+														<li>
+															<h5><span class="tsd-flag ts-flagOptional">Optional</span> key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+														</li>
+														<li>
+															<h5><span class="tsd-flag ts-flagOptional">Optional</span> path: <a href="globals.html#path" class="tsd-signature-type">Path</a></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="interfaces/description.html" class="tsd-signature-type">Description</a></h4>
@@ -332,17 +414,20 @@
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
 						<a href="globals.html#values" class="tsd-kind-icon">Values</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#isarray" class="tsd-kind-icon">is<wbr>Array</a>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#defaultassignstructure" class="tsd-kind-icon">default<wbr>Assign<wbr>Structure</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#defaultassignvalue" class="tsd-kind-icon">default<wbr>Assign<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#defaultisvalue" class="tsd-kind-icon">default<wbr>IsValue</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#from" class="tsd-kind-icon">from</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#getbypath" class="tsd-kind-icon">get<wbr>ByPath</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#isprimitive" class="tsd-kind-icon">is<wbr>Primitive</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#to" class="tsd-kind-icon">to</a>
@@ -364,6 +449,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -412,7 +498,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
